@@ -1,9 +1,8 @@
 #include <iostream>
 
- int hello()
+ void hello()
 {
 	std::cout << "Hello functions.";
-	return 0;
 }
 
 int square(int valueToBeSquared)
@@ -20,7 +19,7 @@ double decimal(double a, double b)
 
 int main()
 {
-	std::cout << hello();
+	hello();
 	std::cout << square(5);
 	std::cout << decimal(2 , 5);
 
