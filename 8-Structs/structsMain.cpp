@@ -1,8 +1,11 @@
 #include "piggyBank.h"
+#include "students.h"
 #include <iostream>
 
 int main()
 {
+// Piggy bank stuff
+/*
 	piggyBank mine;
 	mine.oneDollars = 19;
 	mine.twoDollars = 5;
@@ -15,6 +18,11 @@ int main()
 	calcCoins(mine);
 	calcBills(mine);
 	calcTotal(mine);
+*/
+	students first;
 
+	
+
+	
 	while (true);
 }

@@ -112,9 +112,11 @@
   <ItemGroup>
     <ClCompile Include="piggyBank.cpp" />
     <ClCompile Include="structsMain.cpp" />
+    <ClCompile Include="students.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="piggyBank.h" />
+    <ClInclude Include="students.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
