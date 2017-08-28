@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8-Structs", "8-Structs\8-St
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lotto_of_Fun", "Lotto_of_Fun\Lotto_of_Fun.vcxproj", "{6ECDF767-3530-415F-B3E4-25F9361A1130}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Of_Dreams_and_Nightmares", "Of_Dreams_and_Nightmares\Of_Dreams_and_Nightmares.vcxproj", "{511B527F-1856-499D-B602-A9AA7D0CFD3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -101,6 +103,14 @@ Global
 		{6ECDF767-3530-415F-B3E4-25F9361A1130}.Release|x64.Build.0 = Release|x64
 		{6ECDF767-3530-415F-B3E4-25F9361A1130}.Release|x86.ActiveCfg = Release|Win32
 		{6ECDF767-3530-415F-B3E4-25F9361A1130}.Release|x86.Build.0 = Release|Win32
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Debug|x64.ActiveCfg = Debug|x64
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Debug|x64.Build.0 = Debug|x64
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Debug|x86.ActiveCfg = Debug|Win32
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Debug|x86.Build.0 = Debug|Win32
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Release|x64.ActiveCfg = Release|x64
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Release|x64.Build.0 = Release|x64
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Release|x86.ActiveCfg = Release|Win32
+		{511B527F-1856-499D-B602-A9AA7D0CFD3A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
