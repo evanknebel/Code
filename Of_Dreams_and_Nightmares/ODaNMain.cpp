@@ -1,7 +1,5 @@
 #include <iostream>
-
-float speed = 30;
-
+#include "combat.h"
 /*
 Parry:
 Base 25% chance. 1/2 speed added to percentage. Enters 100% counterattack. 15% damage
@@ -19,10 +17,30 @@ Attack:
 Base 100% chance. Recieve full damage. Enters 100% counterattack.
 
 Counterattack:
-Base 60% chance. 1/2 speed added to percentage.
+Base 70% chance. 1/2 speed added to percentage.
 */
-
-int main
+void combat(Player &p, Enemy &e)
 {
+	std::cout << p.HP << std::endl;
+	int userInput;
+	std::cout << "Choose a move \n1:Attack\n2:Dodge" << std::endl;
+	std::cin >> userInput;
 
+	if (userInput == 1)
+	{
+		ATK(p, e);
+	}
+	std::cout << p.HP << std::endl;
+}
+
+
+
+///////////
+int main()
+{
+	Player dave = {5,20,5,50};
+	Enemy kyle = { 5,20,5,50 };
+
+	combat(dave, kyle);
+	while (true) {}
 }
