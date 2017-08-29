@@ -1,5 +1,6 @@
 #pragma once
 
+// Player stats
 struct Player
 {
 	float SPD;
@@ -8,6 +9,7 @@ struct Player
 	float HP;
 };
 
+// Enemy stats
 struct Enemy
 {
 	float SPD;
@@ -16,16 +18,17 @@ struct Enemy
 	float HP;
 };
 
-float EstimateDamage(int Damage, int Defense);
+// Calculates damage done
+float estimateDamage(int Damage, int Defense);
 
-void parry();
+void playerParry(Player &p, Enemy &e);
 
-void block();
+void playerBlock(Player &p, Enemy &e);
 
-void Playerdodge(Player &p, Enemy &e);
+void playerDodge(Player &p, Enemy &e);
 
-void EnemyDodger(Enemy &e , Player &p);
+//void enemyDodge(Enemy &e , Player &p);
 
-void ATK(Player &p, Enemy &e);
+void playerAttack(Player &p, Enemy &e);
 
-void counterattack();
+void counterattack(Player &p, Enemy &e);

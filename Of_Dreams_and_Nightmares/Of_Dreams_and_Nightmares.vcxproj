@@ -22,6 +22,7 @@
     <ProjectGuid>{511B527F-1856-499D-B602-A9AA7D0CFD3A}</ProjectGuid>
     <RootNamespace>Of_Dreams_and_Nightmares</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>ODaN</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
