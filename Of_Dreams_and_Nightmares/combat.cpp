@@ -40,7 +40,7 @@ void EnemyDodge(Enemy &e, Player &p)
 	}
 	else
 	{
-		std::cout << "Enemy Missed!" << std::endl;
+		std::cout << "You Missed!" << std::endl;
 	}
 
 }
