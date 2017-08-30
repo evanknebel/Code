@@ -1,6 +1,6 @@
 #pragma once
 
-// Player stats
+// Player stat holders
 struct Player
 {
 	float SPD;
@@ -9,7 +9,7 @@ struct Player
 	float HP;
 };
 
-// Enemy stats
+// Enemy stat holders
 struct Enemy
 {
 	float SPD;

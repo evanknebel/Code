@@ -1,14 +1,20 @@
 #include "combat.h"
+#include <iostream>
+#include <chrono>
+#include <thread>
 #include <random>
 #include <time.h>
-#include <iostream>
+#include <Windows.h>
+
+float SLEEP_TIME = 200;
 
 float BLOCK_DAMAGE_REDUCTION = 0.6;
-float COUNTERATTACK_INVERT_PERCENT_CHANCE = 30;
 float DODGE_INVERT_PERCENT_CHANCE = 55;
 float PARRY_DAMAGE_MULTIPLYER = 1.5;
 float PARRY_INVERT_PERCENT_CHANCE = 75;
 float SPEED_BONUS = 0.5;
+float COUNTERATTACK_DAMAGE_REDUCTION = 0.8;
+float COUNTERATTACK_INVERT_PERCENT_CHANCE = 30;
 
 // Calculates damage done
 float estimateDamage(int ATK, int DEF)
@@ -31,8 +37,8 @@ void counterattack(Player &p, Enemy &e)
 	int pHitChance = (rand() % 100 + 1) + (p.SPD * SPEED_BONUS);
 	if (pHitChance > COUNTERATTACK_INVERT_PERCENT_CHANCE)
 	{
-		e.HP -= estimateDamage(p.ATK, e.DEF);
-		std::cout << "You hit the enemy for " << estimateDamage(p.ATK, e.DEF) << " hitpoints" << std::endl;
+		e.HP -= estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION;
+		std::cout << "You hit the enemy for " << estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION << " hitpoints" << std::endl;
 	}
 	else
 	{
