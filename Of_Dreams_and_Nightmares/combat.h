@@ -19,7 +19,7 @@ struct Enemy
 };
 
 // Calculates damage done
-float estimateDamage(int Damage, int Defense);
+float estimateDamage(int ATK, int DEF);
 
 void playerParry(Player &p, Enemy &e);
 
@@ -32,3 +32,6 @@ void playerDodge(Player &p, Enemy &e);
 void playerAttack(Player &p, Enemy &e);
 
 void counterattack(Player &p, Enemy &e);
+
+void combat(Player &p, Enemy &e);
+
