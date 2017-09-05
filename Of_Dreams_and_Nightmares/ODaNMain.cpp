@@ -1,11 +1,12 @@
 #include <iostream>
-#include "combat.h"
 #include <chrono>
 #include <thread>
 #include <random>
 #include <time.h>
 #include <Windows.h>
 #include <string>
+#include "combat.h"
+#include "functionsAndThings.h"
 
 /*
 Parry:
@@ -46,6 +47,7 @@ int main()
 	// Combat actors
 	Player player = {PSpeed,PAttack,PDefense,PHealth};
 	Enemy enemy = {ESpeed,EAttack,EDefense,EHealth };
+
 
 	combat(player, enemy);
 

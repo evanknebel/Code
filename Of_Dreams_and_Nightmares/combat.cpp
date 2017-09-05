@@ -1,24 +1,14 @@
-#include "combat.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
 #include <random>
 #include <time.h>
 #include <Windows.h>
-#include <string>
+#include "functionsAndThings.h"
+#include "combat.h"
 
 float SLEEP_TIME = 200;
-int TEXT_SPEED = 20;
-
-// Prints text slowly in a string
-void delay(int delay, std::string text)
-{
-	for (int i = 0; i < text.length(); i++)
-	{
-		std::cout << text[i];
-		Sleep(delay);
-	}
-}
+int TEXT_SPEED_COMBAT = 10;
 
 float BLOCK_DAMAGE_REDUCTION = 0.6;
 float DODGE_INVERT_PERCENT_CHANCE = 55;
@@ -41,20 +31,23 @@ float estimateDamage(int ATK, int DEF)
 	}
 }
 
-// Calculates results of end of turn counterattack
+// Calculates results of end of turn counterattack and prints results
 void counterattack(Player &p, Enemy &e)
 {
 	srand(time(NULL));
 
 	int pHitChance = (rand() % 100 + 1) + (p.SPD * SPEED_BONUS);
-	if (pHitChance > COUNTERATTACK_INVERT_PERCENT_CHANCE)
+	if (p.HP > 0)
 	{
-		e.HP -= estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION;
-		delay(TEXT_SPEED, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION; delay(TEXT_SPEED, " hitpoints\n");
-	}
-	else
-	{
-		delay(TEXT_SPEED, "You failed your counterattack\n");
+		if (pHitChance > COUNTERATTACK_INVERT_PERCENT_CHANCE)
+		{
+			e.HP -= estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION;
+			delay(TEXT_SPEED_COMBAT, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF) * COUNTERATTACK_DAMAGE_REDUCTION; delay(TEXT_SPEED_COMBAT, " hitpoints\n");
+		}
+		else
+		{
+			delay(TEXT_SPEED_COMBAT, "You failed your counterattack\n");
+		}
 	}
 }
 
@@ -66,15 +59,15 @@ void playerParry(Player &p, Enemy &e)
 	int pHitChance = (rand() % 100 + 1) + (p.SPD * SPEED_BONUS);
 	if (pHitChance >= PARRY_INVERT_PERCENT_CHANCE)
 	{
-		delay(TEXT_SPEED, "You parried the enemy's attack\n");
+		delay(TEXT_SPEED_COMBAT, "You parried the enemy's attack\n");
 		e.HP -= estimateDamage(p.ATK, e.DEF) * PARRY_DAMAGE_MULTIPLYER;
-		delay(TEXT_SPEED, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF) * PARRY_DAMAGE_MULTIPLYER; delay(TEXT_SPEED, " hitpoints\n");
+		delay(TEXT_SPEED_COMBAT, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF) * PARRY_DAMAGE_MULTIPLYER; delay(TEXT_SPEED_COMBAT, " hitpoints\n");
 	}
 	else
 	{
-		delay(TEXT_SPEED, "You failed your parry\n");
+		delay(TEXT_SPEED_COMBAT, "You failed your parry\n");
 		p.HP -= estimateDamage(e.ATK, p.DEF);
-		delay(TEXT_SPEED, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED, " hitpoints\n");
+		delay(TEXT_SPEED_COMBAT, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED_COMBAT, " hitpoints\n");
 		counterattack(p, e);
 	}
 }
@@ -87,13 +80,13 @@ void playerDodge(Player &p, Enemy &e)
 	int pHitChance = (rand() % 100 + 1) + (p.SPD * SPEED_BONUS);
 	if (pHitChance > DODGE_INVERT_PERCENT_CHANCE)
 	{
-		delay(TEXT_SPEED, "You dodged the enemy's attack\n");
+		delay(TEXT_SPEED_COMBAT, "You dodged the enemy's attack\n");
 	}
 	else
 	{
 		p.HP -= estimateDamage(e.ATK, p.DEF);
-		delay(TEXT_SPEED, "You failed to dodge\n");
-		delay(TEXT_SPEED, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED, " hitpoints\n");
+		delay(TEXT_SPEED_COMBAT, "You failed to dodge\n");
+		delay(TEXT_SPEED_COMBAT, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED_COMBAT, " hitpoints\n");
 		counterattack(p, e);
 	}
 }
@@ -101,9 +94,9 @@ void playerDodge(Player &p, Enemy &e)
 // Calculates consequences of player blocking and prints results
 void playerBlock(Player & p, Enemy & e)
 {
-	delay(TEXT_SPEED, "You blocked the enemy's attack\n");
+	delay(TEXT_SPEED_COMBAT, "You blocked the enemy's attack\n");
 	p.HP -= estimateDamage(e.ATK, p.DEF) * BLOCK_DAMAGE_REDUCTION;
-	delay(TEXT_SPEED, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF) * BLOCK_DAMAGE_REDUCTION; delay(TEXT_SPEED, " hitpoints\n");
+	delay(TEXT_SPEED_COMBAT, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF) * BLOCK_DAMAGE_REDUCTION; delay(TEXT_SPEED_COMBAT, " hitpoints\n");
 	counterattack(p, e);
 }
 
@@ -111,9 +104,12 @@ void playerBlock(Player & p, Enemy & e)
 void playerAttack(Player & p, Enemy & e)
 {
 	e.HP -= estimateDamage(p.ATK, e.DEF);
-	delay(TEXT_SPEED, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF); delay(TEXT_SPEED, " hitpoints\n");
-	p.HP -= estimateDamage(e.ATK, p.DEF);
-	delay(TEXT_SPEED, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED, " hitpoints\n");
+	delay(TEXT_SPEED_COMBAT, "You hit the enemy for "); std::cout << estimateDamage(p.ATK, e.DEF); delay(TEXT_SPEED_COMBAT, " hitpoints\n");
+	if (e.HP > 0)
+	{
+		p.HP -= estimateDamage(e.ATK, p.DEF);
+		delay(TEXT_SPEED_COMBAT, "You were hit for "); std::cout << estimateDamage(e.ATK, p.DEF); delay(TEXT_SPEED_COMBAT, " hitpoints\n");
+	}
 }
 
 /*
@@ -136,14 +132,14 @@ void enemyDodge(Enemy &e, Player &p)
 
 void combat(Player &p, Enemy &e)
 {
-	delay(TEXT_SPEED, "Your health is: "); std::cout << p.HP << std::endl;
-	delay(TEXT_SPEED, "Enemy health is: "); std::cout << e.HP << std::endl;
+	delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
+	delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
 	while (p.HP > 0 && e.HP > 0)
 	{
 		int moveChoice = 0;
 		while (moveChoice < 1 || moveChoice > 4)
 		{
-			delay(TEXT_SPEED, "Choose a move\n1:Attack\n2:Parry\n3:Dodge\n4:Block\n");
+			delay(TEXT_SPEED_COMBAT, "Choose a move\n1:Attack\n2:Parry\n3:Dodge\n4:Block\n");
 			std::cin >> moveChoice;
 
 			if (moveChoice == 1)
@@ -168,20 +164,20 @@ void combat(Player &p, Enemy &e)
 
 			else
 			{
-				delay(TEXT_SPEED, "Please enter a number 1-4\n");
+				delay(TEXT_SPEED_COMBAT, "Please enter a number 1-4\n");
 			}
 
 		}
-		delay(TEXT_SPEED, "Your health is: "); std::cout << p.HP << std::endl;
-		delay(TEXT_SPEED, "Enemy health is: "); std::cout << e.HP << std::endl;
+		delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
+		delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
 	}
 	if (p.HP < 0)
 	{
-		delay(TEXT_SPEED, "You died\n");
+		delay(TEXT_SPEED_COMBAT, "You died\n");
 	}
 	else if (e.HP < 0)
 	{
-		delay(TEXT_SPEED, "You killed the enemy\n");
+		delay(TEXT_SPEED_COMBAT, "You killed the enemy\n");
 	}
 	//	e.HP = 35;
 }

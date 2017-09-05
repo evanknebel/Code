@@ -112,10 +112,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="combat.cpp" />
+    <ClCompile Include="functionsAndThings.cpp" />
     <ClCompile Include="ODaNMain.cpp" />
+    <ClCompile Include="openingStuffAndConversation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="combat.h" />
+    <ClInclude Include="functionsAndThings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
