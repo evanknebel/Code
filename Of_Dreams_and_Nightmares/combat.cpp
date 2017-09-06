@@ -7,10 +7,9 @@
 #include "functionsAndThings.h"
 #include "combat.h"
 
-float SLEEP_TIME = 200;
 int TEXT_SPEED_COMBAT = 10;
 
-float BLOCK_DAMAGE_REDUCTION = 0.6;
+float BLOCK_DAMAGE_REDUCTION = 0.45;
 float DODGE_INVERT_PERCENT_CHANCE = 55;
 float PARRY_DAMAGE_MULTIPLYER = 1.5;
 float PARRY_INVERT_PERCENT_CHANCE = 75;
@@ -171,11 +170,72 @@ void combat(Player &p, Enemy &e)
 		delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
 		delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
 	}
-	if (p.HP < 0)
+	if (p.HP <= 0)
 	{
-		delay(TEXT_SPEED_COMBAT, "You died\n");
+		if (p.BLOOD_VIALS <= 0)
+		{
+			delay(TEXT_SPEED_COMBAT, "You died\n");
+		}
+		else if (p.BLOOD_VIALS >= 1)
+		{
+			delay(TEXT_SPEED_COMBAT, "You died"); delay(700, "...\n");
+			delay(70, "Blood vial broken, you live again             \n");
+			p.BLOOD_VIALS--;
+			p.HP = 50;
+			delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
+			delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
+			while (p.HP > 0 && e.HP > 0)
+			{
+				int moveChoice = 0;
+				while (moveChoice < 1 || moveChoice > 4)
+				{
+					delay(TEXT_SPEED_COMBAT, "Choose a move\n1:Attack\n2:Parry\n3:Dodge\n4:Block\n");
+					std::cin >> moveChoice;
+
+					if (moveChoice == 1)
+					{
+						playerAttack(p, e);
+					}
+
+					else if (moveChoice == 2)
+					{
+						playerParry(p, e);
+					}
+
+					else if (moveChoice == 3)
+					{
+						playerDodge(p, e);
+					}
+
+					else if (moveChoice == 4)
+					{
+						playerBlock(p, e);
+					}
+
+					else
+					{
+						delay(TEXT_SPEED_COMBAT, "Please enter a number 1-4\n");
+					}
+
+				}
+				delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
+				delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
+				if (p.HP <= 0)
+				{
+					if (p.BLOOD_VIALS <= 0)
+					{
+						delay(TEXT_SPEED_COMBAT, "You died\n");
+					}
+				}
+				else if (e.HP <= 0)
+				{
+					delay(TEXT_SPEED_COMBAT, "You killed the enemy\n");
+				}
+			}
+		}
 	}
-	else if (e.HP < 0)
+
+	else if (e.HP <= 0)
 	{
 		delay(TEXT_SPEED_COMBAT, "You killed the enemy\n");
 	}

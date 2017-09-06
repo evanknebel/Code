@@ -4,10 +4,6 @@
 // Prints text slowly in a string
 void delay(int delay, std::string text);
 
-void openingText();
-
-
-
 /*Combat*////////////////////////////////
 // Player stat holders
 struct Player
@@ -16,6 +12,7 @@ struct Player
 	float ATK;
 	float DEF;
 	float HP;
+	int BLOOD_VIALS;
 };
 
 // Enemy stat holders
@@ -45,3 +42,4 @@ void counterattack(Player &p, Enemy &e);
 void combat(Player &p, Enemy &e);
 /*End of combat*/////////////////////////
 
+void openingText(Player player, Enemy enemy);

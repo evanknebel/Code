@@ -37,19 +37,20 @@ int main()
 	int PAttack = 20;
 	int PDefense = 5;
 	int PHealth = 50;
+	int BLOOD_VIALS = 0;
 
 	// Enemy stats
 	int ESpeed = 5;
-	int EAttack = 20;
+	int EAttack = 30;
 	int EDefense = 5;
-	int EHealth = 35;
+	int EHealth = 60;
 	
 	// Combat actors
 	Player player = {PSpeed,PAttack,PDefense,PHealth};
 	Enemy enemy = {ESpeed,EAttack,EDefense,EHealth };
 
-
-	combat(player, enemy);
+	openingText(player, enemy);
+//	combat(player, enemy);
 
 
 	while (true){}
