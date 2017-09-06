@@ -12,6 +12,7 @@ struct Player
 	float ATK;
 	float DEF;
 	float HP;
+	int MAX_HP;
 	int BLOOD_VIALS;
 };
 

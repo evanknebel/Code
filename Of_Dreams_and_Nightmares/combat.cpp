@@ -181,7 +181,7 @@ void combat(Player &p, Enemy &e)
 			delay(TEXT_SPEED_COMBAT, "You died"); delay(700, "...\n");
 			delay(70, "Blood vial broken, you live again             \n");
 			p.BLOOD_VIALS--;
-			p.HP = 50;
+			p.HP = p.MAX_HP;
 			delay(TEXT_SPEED_COMBAT, "Your health is: "); std::cout << p.HP << std::endl;
 			delay(TEXT_SPEED_COMBAT, "Enemy health is: "); std::cout << e.HP << std::endl;
 			while (p.HP > 0 && e.HP > 0)

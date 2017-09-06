@@ -38,6 +38,7 @@ int main()
 	int PDefense = 5;
 	int PHealth = 50;
 	int BLOOD_VIALS = 0;
+	int MAX_HP = 50;
 
 	// Enemy stats
 	int ESpeed = 5;
@@ -50,6 +51,7 @@ int main()
 	Enemy enemy = {ESpeed,EAttack,EDefense,EHealth };
 
 	openingText(player, enemy);
+	std::cout << "\nThis is the end of the current build.";
 //	combat(player, enemy);
 
 
