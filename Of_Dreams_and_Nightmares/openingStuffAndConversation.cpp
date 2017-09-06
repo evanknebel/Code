@@ -14,7 +14,7 @@ void openingText(Player player, Enemy enemy)
 {
 	int moveChoice = 0;
 // INTRO
-	delay(TEXT_SPEED_CONVERSATION, "You awaken in a field of long grasses.\n"); Sleep(SLEEP_TIME); delay(TEXT_SPEED_CONVERSATION, "Your neck is painfully sore, and you find you have been sleeping against\nan old wooden chest.\nIt appears to be unlocked.\n");
+	delay(TEXT_SPEED_CONVERSATION, "You awaken in a field."); Sleep(200); delay(TEXT_SPEED_CONVERSATION, " Thick grasses of gold and green surround you; flowers of red, yellow and purple are spotted throughout."); Sleep(500); delay(TEXT_SPEED_CONVERSATION, " After quick observation of the surrounding area,"); Sleep(100);  delay(TEXT_SPEED_CONVERSATION, " a winding dirt path can be seen leading towards an impossibly tall mountain.\n"); Sleep(SLEEP_TIME); delay(TEXT_SPEED_CONVERSATION, "Standing up, you notice your neck is painfully sore, and you find you have been sleeping against\nan old wooden chest.\nIt appears to be unlocked.\n\n");
 	delay(TEXT_SPEED_CONVERSATION, "Do you open it?\n");
 	while (moveChoice < 1 || moveChoice > 2)
 	{
@@ -27,7 +27,7 @@ void openingText(Player player, Enemy enemy)
 			delay(TEXT_SPEED_CONVERSATION, "You open the chest"); delay(500, "...\n");
 			Sleep(SLEEP_TIME);
 			delay(TEXT_SPEED_CONVERSATION, "Inside the chest are two items: A spiked gauntlet, and a small dagger.\n");
-			delay(TEXT_SPEED_CONVERSATION, "Which do you take?\n");
+			delay(TEXT_SPEED_CONVERSATION, "Which do you take?\n\n");
 // WHICH WEAPON TO TAKE?			
 			moveChoice = 0;
 			delay(TEXT_SPEED_CONVERSATION, "Choose\n1:The gauntlet. (HP +5, DEF +5)\n2:The dagger. (ATK +5, SPD +5)\n");
@@ -51,10 +51,11 @@ void openingText(Player player, Enemy enemy)
 					delay(TEXT_SPEED_CONVERSATION, "Please enter a number 1-2\n");
 				}
 // FIRST FIGHT
-				delay(TEXT_SPEED_CONVERSATION, "You see a large tiger running at you.\n");
+				Sleep(SLEEP_TIME);
+				delay(TEXT_SPEED_CONVERSATION, "A tiger-like creature, nearly the size of a horse leaps out of the tall grass."); Sleep(300);  delay(TEXT_SPEED_CONVERSATION, " It has long saber-teeth, and three"); delay(550, "..."); Sleep(200); delay(TEXT_SPEED_CONVERSATION, "axes? "); Sleep(400); delay(TEXT_SPEED_CONVERSATION, "Horns? "); Sleep(200); delay(TEXT_SPEED_CONVERSATION, "On it's head. "); Sleep(300); delay(TEXT_SPEED_CONVERSATION, "Two on either side,"); Sleep(100); delay(TEXT_SPEED_CONVERSATION, " one on top running the length of it's skull, "); Sleep(100); delay(TEXT_SPEED_CONVERSATION, "and all evidently more than sharp enough to easily cut you in half.\n\n");
 				delay(TEXT_SPEED_CONVERSATION, "How do you proceed?\n");
 				moveChoice = 0;
-				delay(TEXT_SPEED_CONVERSATION, "Choose\n1:Fight the beast\n2:Run away\n");
+				delay(TEXT_SPEED_CONVERSATION, "Choose\n1:Fight the beast\n2:Attempt to run away\n");
 				while (moveChoice < 1 || moveChoice > 2)
 				{
 					std::cin >> moveChoice;
