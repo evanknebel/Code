@@ -15,7 +15,7 @@ void openingText(Player player, Enemy enemy)
 {
 	int moveChoice = 0;
 ////// INTRO
-	delay(TEXT_SPEED_CONVERSATION, "You awaken in a field."); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, " Thick grasses of gold and green surround you; flowers of\nred, yellow and purple are spotted throughout."); Sleep(500); delay(TEXT_SPEED_CONVERSATION, " After quick observation of the\nsurrounding area,"); Sleep(100);  delay(TEXT_SPEED_CONVERSATION, " a winding dirt path can be seen leading towards an impossibly\ntall mountain.\n"); Sleep(SLEEP_TIME_DRAMA); delay(TEXT_SPEED_CONVERSATION, "Standing up, you notice your neck is painfully sore, and you find you have been\nsleeping against an old wooden chest.\n"); Sleep(500); delay(TEXT_SPEED_CONVERSATION, "It appears to be unlocked.\n\n");
+	delay(TEXT_SPEED_CONVERSATION, "You awaken in a field."); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, " Thick grasses of gold and green surround you; flowers of\nred, yellow and purple are spotted throughout."); Sleep(500); delay(TEXT_SPEED_CONVERSATION, " After quick observation of the\nsurrounding area,"); Sleep(100);  delay(TEXT_SPEED_CONVERSATION, " a winding dirt path can be seen leading towards an impossibly\ntall mountain.\n"); Sleep(SLEEP_TIME_DRAMA); delay(TEXT_SPEED_CONVERSATION, "Standing up, you notice your neck is painfully sore, and you find you have been\nsleeping against an old wooden chest.\n"); Sleep(500); delay(TEXT_SPEED_CONVERSATION, "It appears to be unlocked.\n");
 	delay(TEXT_SPEED_CONVERSATION, "Do you open it?\n\n");
 	while (moveChoice < 1 || moveChoice > 2)
 	{
@@ -65,6 +65,8 @@ void openingText(Player player, Enemy enemy)
 					std::cin >> moveChoice;
 					if (moveChoice == 1)
 					{
+						enemy.ATK = 60;
+						enemy.HP = 100;
 						delay(TEXT_SPEED_CONVERSATION, "Here goes nothing\n\n");
 						combat(player, enemy);
 					}
