@@ -174,11 +174,11 @@ void combat(Player &p, Enemy &e)
 	{
 		if (p.BLOOD_VIALS <= 0)
 		{
-			delay(TEXT_SPEED_COMBAT, "You died\n");
+			delay(TEXT_SPEED_COMBAT, "You have been defeated\n");
 		}
 		else if (p.BLOOD_VIALS >= 1)
 		{
-			delay(TEXT_SPEED_COMBAT, "You died"); delay(700, "...\n");
+			delay(TEXT_SPEED_COMBAT, "You have been defeated\n"); delay(700, "...\n");
 			delay(70, "Blood vial broken, you live again             \n");
 			p.BLOOD_VIALS--;
 			p.HP = p.MAX_HP;
