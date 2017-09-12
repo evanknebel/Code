@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A85D359B-056D-41B4-9D06-CCB1FC62D475}</ProjectGuid>
-    <RootNamespace>HeapStack</RootNamespace>
+    <ProjectGuid>{344C5B10-D66B-4318-A0BA-16EAE8B4A8E2}</ProjectGuid>
+    <RootNamespace>My02PointerArithmetic</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>01 - HeapStack</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -111,7 +110,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="HeapStackMain.cpp" />
+    <ClCompile Include="PointerArithmeticMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

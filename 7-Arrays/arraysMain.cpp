@@ -31,14 +31,14 @@ void reverse(int num[], int size)
 	}
 }
 
-void sortAscend(int num[], int size)
-{
-	while (true)
-	{
-		bool isSorted = true;
-		for (int i = 0; )
-	}
-}
+//void sortAscend(int num[], int size)
+//{
+//	while (true)
+//	{
+//		bool isSorted = true;
+//		for (int i = 0; )
+//	}
+//}
 
 int main()
 {
