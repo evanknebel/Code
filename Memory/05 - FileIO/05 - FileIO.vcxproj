@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C076DD60-9295-4C45-AA95-E083BE691F6B}</ProjectGuid>
-    <RootNamespace>CompilationLinkageandStorageDuration</RootNamespace>
+    <ProjectGuid>{102D3B49-8BFE-4199-874D-E9472DED08CB}</ProjectGuid>
+    <RootNamespace>My05FileIO</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>04 - Compilation, Linkage, and Storage Duration</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -111,7 +110,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="FileIOMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="aCompliment.txt" />
+    <Text Include="anInsult.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
