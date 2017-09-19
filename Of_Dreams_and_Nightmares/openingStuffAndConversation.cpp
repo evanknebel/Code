@@ -6,6 +6,8 @@
 #include <Windows.h>
 #include "functionsAndThings.h"
 #include "combat.h"
+#include <fstream>
+#include <string>
 
 int SLEEP_TIME_COMMA = 200;
 int SLEEP_TIME_DRAMA = 1000;
@@ -20,6 +22,7 @@ void openingText(Player player, Enemy enemy)
 	while (moveChoice < 1 || moveChoice > 2)
 	{
 ////////// OPEN THE STARTING CHEST?	
+		
 		delay(TEXT_SPEED_CONVERSATION, "Choose\n1:Open the chest\n2:Leave that chest the hell alone. Shit's spooky.\n");
 		std::cin >> moveChoice;
 		//player.BLOOD_VIALS += 1;
@@ -84,17 +87,49 @@ void openingText(Player player, Enemy enemy)
 					Sleep(SLEEP_TIME_DRAMA);
 					delay(700, "...\n");
 					delay(TEXT_SPEED_CONVERSATION, "");
+					return;
 				}
 			}
 		}
-////////// COWARD OUT
+////////// LEAVE CHEST ALONE
 		else if (moveChoice == 2)
 		{
-			delay(TEXT_SPEED_CONVERSATION, "You ran away like a big coward, never to be seen again.\nADVENTURE OVER\n");
+			delay(TEXT_SPEED_CONVERSATION, "You leave the chest alone. You don't even know where you are, how could you\nknow there isn't anything dangerous inside?\n");
+			player.MAX_HP += 50;
 		}
 		else
 		{
 			delay(TEXT_SPEED_CONVERSATION, "Please enter a number 1-2\n");
+		}
+		Sleep(SLEEP_TIME_DRAMA);
+		delay(TEXT_SPEED_CONVERSATION, "A tiger-like creature, nearly the size of a horse leaps out of the tall grass.\n"); Sleep(300);  delay(TEXT_SPEED_CONVERSATION, "It has long saber-teeth, and three"); delay(550, "..."); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, "axes? "); Sleep(400); delay(TEXT_SPEED_CONVERSATION, "Horns? "); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, "On it's head. "); Sleep(300); delay(TEXT_SPEED_CONVERSATION, "Two on either\nside,"); Sleep(100); delay(TEXT_SPEED_CONVERSATION, " one on top running the length of it's skull, "); Sleep(100); delay(TEXT_SPEED_CONVERSATION, "and all evidently more than\nsharp enough to easily cut you in half.\n\n");
+		delay(TEXT_SPEED_CONVERSATION, "How do you proceed?\n");
+		moveChoice = 0;
+		delay(TEXT_SPEED_CONVERSATION, "Choose\n1:Fight the beast\n2:Attempt to run away\n");
+		while (moveChoice < 1 || moveChoice > 2)
+		{
+			std::cin >> moveChoice;
+///////////// FIRST FIGHT (WITHOUT WEAPON)
+			if (moveChoice == 1)
+			{
+				enemy.ATK = 60;
+				enemy.HP = 100;
+				delay(TEXT_SPEED_CONVERSATION, "Brave as you may be, attempting to fight the creature with nothing but your\nbare fists doesn't accomplish much.\n");
+			}
+			else if (moveChoice == 2)
+			{
+				delay(TEXT_SPEED_CONVERSATION, "You attempt to run, but the creature is too fast.\n");
+			}
+			else
+			{
+				delay(TEXT_SPEED_CONVERSATION, "Please enter a number 1-2\n");
+			}
+			delay(TEXT_SPEED_CONVERSATION, "As you fall to the ground, you notice something..."); Sleep(500); delay(TEXT_SPEED_CONVERSATION, " A small, "); Sleep(300); delay(TEXT_SPEED_CONVERSATION, "dead, "); Sleep(300); delay(TEXT_SPEED_CONVERSATION, "white mouse.\n");
+			delay(TEXT_SPEED_CONVERSATION, "The beast rears back, and slices down hard, "); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, "cutting you clean in half.\n");
+			delay(TEXT_SPEED_CONVERSATION, "Done with you, "); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, "and perhaps a bit prideful, "); Sleep(SLEEP_TIME_COMMA); delay(TEXT_SPEED_CONVERSATION, "it wanders away.\n");
+			Sleep(SLEEP_TIME_DRAMA);
+			delay(700, "...\n");
+			delay(TEXT_SPEED_CONVERSATION, "");
 		}
 	}
 }

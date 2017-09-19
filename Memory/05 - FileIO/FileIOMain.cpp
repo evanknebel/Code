@@ -5,25 +5,45 @@
 int main()
 {
 	std::fstream file;
-	file.open("anInsult.txt");
 
-	if (file.fail())
+	file.open("aCompliment.txt", std::ios_base::in);
+
+	if (file.is_open())
 	{
-		std::cerr << "File not found." << std::endl;
-	}
+		std::cout << "Successfully opened file" << std::endl;
 
-	std::string buffer;
-	while (std::getline("anInsult.txt", buffer))  // iterates until error or EOF
+		char line[100];
+
+		while (file.peek() != EOF)
+		{
+			file.getline(line, 100);
+			std::cout << line << std::endl;
+		}
+		file.close();
+	}
+	else
 	{
-		// print the line after it is buffered
-		std::cout << buffer << std::endl;
+		std::cout << "Could not find file" << std::endl;
 	}
+	file.open("anInsult.txt", std::ios_base::in);
 
+	if (file.is_open())
+	{
+		std::cout << "Successfully opened file" << std::endl;
 
+		char line[100];
 
-
-
-
+		while (file.peek() != EOF)
+		{
+			file.getline(line, 100);
+			std::cout << line << std::endl;
+		}
+		file.close();
+	}
+	else
+	{
+		std::cout << "Could not find file" << std::endl;
+	}
 
 	system("pause");
 	system("pause");
