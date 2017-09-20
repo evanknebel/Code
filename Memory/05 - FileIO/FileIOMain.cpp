@@ -1,23 +1,33 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <Windows.h>
+
+// Prints text slowly in a string
+void delay(int delay, std::string text)
+{
+	for (int i = 0; i < text.length(); i++)
+	{
+		std::cout << text[i];
+		Sleep(delay);
+	}
+}
 
 int main()
 {
 	std::fstream file;
 
-	file.open("aCompliment.txt", std::ios_base::in);
+	file.open("_TEST_.txt", std::ios_base::in);
 
 	if (file.is_open())
 	{
 		std::cout << "Successfully opened file" << std::endl;
 
-		char line[100];
+		char line[500];
 
 		while (file.peek() != EOF)
 		{
-			file.getline(line, 100);
-			std::cout << line << std::endl;
+			file.getline(line, 9999999999);
+			delay(20, line);
 		}
 		file.close();
 	}
@@ -25,25 +35,7 @@ int main()
 	{
 		std::cout << "Could not find file" << std::endl;
 	}
-	file.open("anInsult.txt", std::ios_base::in);
 
-	if (file.is_open())
-	{
-		std::cout << "Successfully opened file" << std::endl;
-
-		char line[100];
-
-		while (file.peek() != EOF)
-		{
-			file.getline(line, 100);
-			std::cout << line << std::endl;
-		}
-		file.close();
-	}
-	else
-	{
-		std::cout << "Could not find file" << std::endl;
-	}
 
 	system("pause");
 	system("pause");
