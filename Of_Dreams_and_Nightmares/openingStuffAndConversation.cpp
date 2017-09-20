@@ -70,6 +70,7 @@ void openingText(Player player, Enemy enemy)
 					{
 						enemy.ATK = 60;
 						enemy.HP = 100;
+						enemy.DEF = 20;
 						delay(TEXT_SPEED_CONVERSATION, "Here goes nothing\n\n");
 						combat(player, enemy);
 					}
