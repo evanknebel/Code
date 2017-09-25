@@ -4,7 +4,7 @@
 
 int main()
 {
-		
+	Television tv(3, 10);
 
 
 
