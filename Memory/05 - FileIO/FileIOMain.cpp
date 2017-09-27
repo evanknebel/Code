@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <Windows.h>
 
 // Prints text slowly in a string
@@ -9,6 +10,14 @@ void delay(int delay, std::string text)
 	{
 		std::cout << text[i];
 		Sleep(delay);
+		if (text[i] == ',')
+		{
+			Sleep(100);
+		}
+		else if (text[i] == '.')
+		{
+			Sleep(500);
+		}
 	}
 }
 
@@ -22,12 +31,12 @@ int main()
 	{
 		std::cout << "Successfully opened file" << std::endl;
 
-		char line[500];
+		std::string line;
 
-		while (file.peek() != EOF)
+		while (std::getline(file, line))
 		{
-			file.getline(line, 9999999999);
-			delay(20, line);
+			delay(25, line);
+			std::cout << std::endl;
 		}
 		file.close();
 	}

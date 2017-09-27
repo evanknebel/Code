@@ -1,9 +1,8 @@
-tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt0
-tttttttttttttttttttttttttttttttttttttt0
-ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt0
-tttttttttttttttttttttttttttttttttttttttttttttttttttttt0
-tttttttttttttttttt0
-ttttttttttttttttttttttttttttt0
-ttttttttttttttttttttttttttttttttttttttttttttt0
-tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt0
-ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt0
+This is a test of a program which should place pauses after commas, and longer
+pauses after periods.
+This should also seperate lines, and print the text slowly. Not all at once.
+
+hjasfhj,kbreasghrea, adsijhetha. waekashfmm.
+sadf
+asdf,gsdag
+asdfasdf.
