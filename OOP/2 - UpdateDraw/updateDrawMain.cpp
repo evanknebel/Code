@@ -5,6 +5,9 @@
 
 //$(SolutionDir)Dependencies\lib\$(PlatformShortName)\$(Configuration)
 
+// sfw::getkey('')
+
+
 int main()
 {
 	//create draw window
@@ -21,11 +24,11 @@ int main()
 		//game goes here
 		sfw::drawCircle(P1X, P1Y, 70);
 
-		while (KEY_LEFT)
-		{
-			P1X--;
-			sfw::drawCircle(P1X, P1Y, 70);
-		}
+		//while (KEY_LEFT)
+		//{
+		//	P1X--;
+		//	sfw::drawCircle(P1X, P1Y, 70);
+		//}
 
 
 	}
