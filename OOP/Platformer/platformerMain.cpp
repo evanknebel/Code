@@ -29,6 +29,7 @@ int JUMP_HEIGHT = 100;
 
 void detectCollisionBoundries()
 {
+
 	if (P1X + P1RADIUS > WINDOW_WIDTH)
 	{
 		P1X = WINDOW_WIDTH - P1RADIUS;
@@ -112,7 +113,7 @@ int main()
 			}
 		//fall/////////////////////////////
 		//clamping at 0 to prevent errors
-			else if (JUMP_TIMER <= 0)
+			if (JUMP_TIMER <= 0)
 			{
 				JUMP_TIMER = 0;
 				isJumping = false;
@@ -122,7 +123,7 @@ int main()
 		{
 			if (P1Y > 0)
 			{
-				P1Y;
+				P1Y -= 5;
 			}
 		}
 		////////end player 1 stuff
