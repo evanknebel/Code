@@ -5,27 +5,45 @@
 
 // sfw::getkey('')
 
+//game window dimentions
 int WINDOW_WIDTH = 1000;
 int WINDOW_HEIGHT = 1800;
 
+//movement speed (lateral)
 int DEFAULT_SPEED = 10;
 int P1SPEED = DEFAULT_SPEED;
 int P2SPEED = 3;
 
+//p1 character properties
 int P1X = 400;
 int P1Y = 71;
-int P1RADIUS = 70;
+int P1RADIUS = 10;
 
+//p2 character properties
 int P2X = 700;
 int P2Y = 235;
 int P2RADIUS = 70;
 
+//jump values
 int JUMP_TIMER = 0;
 bool isJumping = false;
 bool isFalling = true;
 int FALL_TIMER = 0;
 int JUMP_SPEED = 10;
 int JUMP_HEIGHT = 450;
+
+//platform 1 properties
+int PLATFORM_1_HEIGHT = 300;
+int PLATFORM_1_WIDTH = 400;
+int PLATFORM_1_BASE_POSITION = 80;
+//platform 2 properties
+int PLATFORM_2_HEIGHT = 600;
+int PLATFORM_2_WIDTH = 250;
+int PLATFORM_2_BASE_POSITION = 600;
+//platform 3 properties
+int PLATFORM_3_HEIGHT = 900;
+int PLATFORM_3_WIDTH = 60;
+int PLATFORM_3_BASE_POSITION = P1RADIUS * 2 + 1;
 
 void detectCollisionBoundries()
 {
@@ -55,9 +73,15 @@ int main()
 	//set background color
 	sfw::setBackgroundColor(BLACK);
 
+	
+
 	//set game loop
 	while (sfw::stepContext())
 	{
+		//build platforms
+		sfw::drawLine(PLATFORM_1_BASE_POSITION, PLATFORM_1_HEIGHT, PLATFORM_1_BASE_POSITION + PLATFORM_1_WIDTH, PLATFORM_1_HEIGHT);
+		sfw::drawLine(PLATFORM_2_BASE_POSITION, PLATFORM_2_HEIGHT, PLATFORM_2_BASE_POSITION + PLATFORM_2_WIDTH, PLATFORM_2_HEIGHT);
+		sfw::drawLine(PLATFORM_3_BASE_POSITION, PLATFORM_3_HEIGHT, PLATFORM_3_BASE_POSITION + PLATFORM_3_WIDTH, PLATFORM_3_HEIGHT);
 
 		//debug
 		std::cout << JUMP_TIMER << "                    " << FALL_TIMER << std::endl;
@@ -150,6 +174,35 @@ int main()
 				}
 			}
 		}
+		//platforms////////////////////////
+		//platform 1
+		if (P1Y - P1RADIUS >= PLATFORM_1_HEIGHT - JUMP_SPEED && P1Y + P1RADIUS <= PLATFORM_1_HEIGHT + P1RADIUS * 2)
+		{
+			if (P1X - P1RADIUS < PLATFORM_1_BASE_POSITION + PLATFORM_1_WIDTH && P1X + P1RADIUS > PLATFORM_1_BASE_POSITION)
+			{
+				P1Y = PLATFORM_1_HEIGHT + P1RADIUS;
+			}
+		}
+
+		//platform 2
+		if (P1Y - P1RADIUS >= PLATFORM_2_HEIGHT - JUMP_SPEED && P1Y + P1RADIUS <= PLATFORM_2_HEIGHT + P1RADIUS * 2)
+		{
+			if (P1X - P1RADIUS < PLATFORM_2_BASE_POSITION + PLATFORM_2_WIDTH && P1X + P1RADIUS > PLATFORM_2_BASE_POSITION)
+			{
+				P1Y = PLATFORM_2_HEIGHT + P1RADIUS;
+			}
+		}
+
+		//platform 3
+		if (P1Y - P1RADIUS >= PLATFORM_3_HEIGHT - JUMP_SPEED && P1Y + P1RADIUS <= PLATFORM_3_HEIGHT + P1RADIUS * 2)
+		{
+			if (P1X - P1RADIUS < PLATFORM_3_BASE_POSITION + PLATFORM_3_WIDTH && P1X + P1RADIUS > PLATFORM_3_BASE_POSITION)
+			{
+				P1Y = PLATFORM_3_HEIGHT + P1RADIUS;
+			}
+		}
+
+
 		////////end player 1 stuff
 	}
 	std::cout << "Congradulation" << std::endl << "a winner is you" << std::endl;
