@@ -5,10 +5,10 @@
 
 // sfw::getkey('')
 
-int WINDOW_WIDTH = 800;
-int WINDOW_HEIGHT = 600;
+int WINDOW_WIDTH = 1000;
+int WINDOW_HEIGHT = 1800;
 
-int DEFAULT_SPEED = 2;
+int DEFAULT_SPEED = 10;
 int P1SPEED = DEFAULT_SPEED;
 int P2SPEED = 3;
 
@@ -22,10 +22,10 @@ int P2RADIUS = 70;
 
 int JUMP_TIMER = 0;
 bool isJumping = false;
-bool isFalling = false;
+bool isFalling = true;
 int FALL_TIMER = 0;
 int JUMP_SPEED = 10;
-int JUMP_HEIGHT = 100;
+int JUMP_HEIGHT = 450;
 
 void detectCollisionBoundries()
 {
@@ -59,6 +59,9 @@ int main()
 	while (sfw::stepContext())
 	{
 
+		//debug
+		std::cout << JUMP_TIMER << "                    " << FALL_TIMER << std::endl;
+
 
 		////////player 1 stuff
 		//bounderies
@@ -91,12 +94,18 @@ int main()
 		//265 is KEY_UP
 		if (isJumping == false)
 		{
-			if (JUMP_TIMER == 0)
+			if (isFalling == true)
 			{
-				if (sfw::getKey(265))
+				if (JUMP_TIMER == 0)
 				{
-					JUMP_TIMER = JUMP_HEIGHT;
-					isJumping = true;
+					if (FALL_TIMER == 0)
+					{
+						if (sfw::getKey(265))
+						{
+							JUMP_TIMER = JUMP_HEIGHT;
+							isJumping = true;
+						}
+					}
 				}
 			}
 		}
@@ -117,13 +126,28 @@ int main()
 			{
 				JUMP_TIMER = 0;
 				isJumping = false;
+				isFalling = true;
+				FALL_TIMER = JUMP_HEIGHT;
 			}
 		}
 		if (isJumping == false)
 		{
-			if (P1Y > 0)
+			if (isFalling == true)
 			{
-				P1Y -= 5;
+				//
+				if (FALL_TIMER <= JUMP_HEIGHT)
+				{
+					if (FALL_TIMER > 0)
+					{
+						P1Y -= JUMP_SPEED / 2;
+						FALL_TIMER -= JUMP_SPEED;
+					}
+				}
+				//
+				if (P1Y > 0)
+				{
+					P1Y -= JUMP_SPEED / 2;
+				}
 			}
 		}
 		////////end player 1 stuff
