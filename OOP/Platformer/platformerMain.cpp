@@ -10,14 +10,14 @@ int WINDOW_WIDTH = 1000;
 int WINDOW_HEIGHT = 1800;
 
 //movement speed (lateral)
-int DEFAULT_SPEED = 10;
+int DEFAULT_SPEED = 9;
 int P1SPEED = DEFAULT_SPEED;
 int P2SPEED = 3;
 
 //p1 character properties
-int P1X = 400;
-int P1Y = 71;
 int P1RADIUS = 10;
+int P1X = 0;
+int P1Y = 0;
 
 //p2 character properties
 int P2X = 700;
@@ -44,6 +44,12 @@ int PLATFORM_2_BASE_POSITION = 600;
 int PLATFORM_3_HEIGHT = 900;
 int PLATFORM_3_WIDTH = 60;
 int PLATFORM_3_BASE_POSITION = P1RADIUS * 2 + 1;
+
+//item
+int ITEM_RADIUS = 4;
+int ITEMX = PLATFORM_3_BASE_POSITION + (PLATFORM_3_WIDTH / 2);
+int ITEMY = PLATFORM_3_HEIGHT + P1RADIUS;
+bool isCollected = false;
 
 void detectCollisionBoundries()
 {
@@ -83,8 +89,21 @@ int main()
 		sfw::drawLine(PLATFORM_2_BASE_POSITION, PLATFORM_2_HEIGHT, PLATFORM_2_BASE_POSITION + PLATFORM_2_WIDTH, PLATFORM_2_HEIGHT);
 		sfw::drawLine(PLATFORM_3_BASE_POSITION, PLATFORM_3_HEIGHT, PLATFORM_3_BASE_POSITION + PLATFORM_3_WIDTH, PLATFORM_3_HEIGHT);
 
+		//draw item if not collected, and stop drawing when collected
+		if (isCollected == false)
+		{
+			sfw::drawCircle(ITEMX, ITEMY, ITEM_RADIUS);
+		}
+		if (ITEMX >= P1X - P1RADIUS && ITEMX <= P1X + P1RADIUS)
+		{
+			if (ITEMY >= P1Y - P1RADIUS && ITEMY <= P1Y + P1RADIUS)
+			{
+				isCollected = true;
+			}
+		}
+
 		//debug
-		std::cout << JUMP_TIMER << "                    " << FALL_TIMER << std::endl;
+		std::cout << JUMP_TIMER << "           " << FALL_TIMER << "           " << P1Y << "           " << P1X << "           " << isCollected << std::endl;
 
 
 		////////player 1 stuff
@@ -116,23 +135,23 @@ int main()
 
 		//jump/////////////////////////////
 		//265 is KEY_UP
-		if (isJumping == false)
-		{
-			if (isFalling == true)
-			{
-				if (JUMP_TIMER == 0)
-				{
-					if (FALL_TIMER == 0)
-					{
-						if (sfw::getKey(265))
-						{
-							JUMP_TIMER = JUMP_HEIGHT;
-							isJumping = true;
-						}
-					}
-				}
-			}
-		}
+		//if (isJumping == false)
+		//{
+		//	if (isFalling == true)
+		//	{
+		//		if (JUMP_TIMER == 0)
+		//		{
+		//			if (FALL_TIMER == 0)
+		//			{
+		//				if (sfw::getKey(265))
+		//				{
+		//					JUMP_TIMER = JUMP_HEIGHT;
+		//					isJumping = true;
+		//				}
+		//			}
+		//		}
+		//	}
+		//}
 		//rising motion
 		if (isJumping == true)
 		{
@@ -163,24 +182,66 @@ int main()
 				{
 					if (FALL_TIMER > 0)
 					{
-						P1Y -= JUMP_SPEED / 2;
 						FALL_TIMER -= JUMP_SPEED;
 					}
 				}
 				//
 				if (P1Y > 0)
 				{
-					P1Y -= JUMP_SPEED / 2;
+					P1Y -= JUMP_SPEED;
 				}
 			}
 		}
 		//platforms////////////////////////
+		//ground
+		if (P1Y - P1RADIUS >= 0 - JUMP_SPEED && P1Y + P1RADIUS <= 0 + P1RADIUS * 2)
+		{
+			if (P1X - P1RADIUS < 0 + WINDOW_WIDTH && P1X + P1RADIUS > 0)
+			{
+				if (isJumping == false)
+				{
+					if (isFalling == true)
+					{
+						if (JUMP_TIMER == 0)
+						{
+							if (FALL_TIMER == 0)
+							{
+								if (sfw::getKey(265))
+								{
+									JUMP_TIMER = JUMP_HEIGHT;
+									isJumping = true;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		//platform 1
 		if (P1Y - P1RADIUS >= PLATFORM_1_HEIGHT - JUMP_SPEED && P1Y + P1RADIUS <= PLATFORM_1_HEIGHT + P1RADIUS * 2)
 		{
 			if (P1X - P1RADIUS < PLATFORM_1_BASE_POSITION + PLATFORM_1_WIDTH && P1X + P1RADIUS > PLATFORM_1_BASE_POSITION)
 			{
 				P1Y = PLATFORM_1_HEIGHT + P1RADIUS;
+				FALL_TIMER = 0;
+				if (isJumping == false)
+				{
+					if (isFalling == true)
+					{
+						if (JUMP_TIMER == 0)
+						{
+							if (FALL_TIMER == 0)
+							{
+								if (sfw::getKey(265))
+								{
+									JUMP_TIMER = JUMP_HEIGHT;
+									isJumping = true;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -190,6 +251,24 @@ int main()
 			if (P1X - P1RADIUS < PLATFORM_2_BASE_POSITION + PLATFORM_2_WIDTH && P1X + P1RADIUS > PLATFORM_2_BASE_POSITION)
 			{
 				P1Y = PLATFORM_2_HEIGHT + P1RADIUS;
+				FALL_TIMER = 0;
+				if (isJumping == false)
+				{
+					if (isFalling == true)
+					{
+						if (JUMP_TIMER == 0)
+						{
+							if (FALL_TIMER == 0)
+							{
+								if (sfw::getKey(265))
+								{
+									JUMP_TIMER = JUMP_HEIGHT;
+									isJumping = true;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -199,11 +278,33 @@ int main()
 			if (P1X - P1RADIUS < PLATFORM_3_BASE_POSITION + PLATFORM_3_WIDTH && P1X + P1RADIUS > PLATFORM_3_BASE_POSITION)
 			{
 				P1Y = PLATFORM_3_HEIGHT + P1RADIUS;
+				FALL_TIMER = 0;
+				if (isJumping == false)
+				{
+					if (isFalling == true)
+					{
+						if (JUMP_TIMER == 0)
+						{
+							if (FALL_TIMER == 0)
+							{
+								if (sfw::getKey(265))
+								{
+									JUMP_TIMER = JUMP_HEIGHT;
+									isJumping = true;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
-
-
 		////////end player 1 stuff
+
+		//if (isCollected == true)
+		//{
+		//	break;
+		//}
+
 	}
 	std::cout << "Congradulation" << std::endl << "a winner is you" << std::endl;
 
