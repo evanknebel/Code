@@ -7,7 +7,7 @@
 
 //game window dimentions
 int WINDOW_WIDTH = 1000;
-int WINDOW_HEIGHT = 1400;
+int WINDOW_HEIGHT = 1000; //1400
 
 //movement speed (lateral)
 int DEFAULT_SPEED = 9;
@@ -39,22 +39,24 @@ int PLATFORM_2_HEIGHT = 600;
 int PLATFORM_2_WIDTH = 250;
 int PLATFORM_2_BASE_POSITION = 600;
 //platform 3 properties
-int PLATFORM_3_HEIGHT = 900;
+int PLATFORM_3_HEIGHT = 850;
 int PLATFORM_3_WIDTH = 60;
 int PLATFORM_3_BASE_POSITION = P1RADIUS * 2 + 1;
 
+//item properties
+int ITEM_DEFAULT_RADIUS = 4;
 //item 1 properties
-int ITEM_1_RADIUS = 4;
+int ITEM_1_RADIUS = ITEM_DEFAULT_RADIUS;
 int ITEM_1_X = PLATFORM_1_BASE_POSITION + (PLATFORM_1_WIDTH / 2);
 int ITEM_1_Y = PLATFORM_1_HEIGHT + P1RADIUS;
 bool isItem1Collected = false;
 //item 2 properties
-int ITEM_2_RADIUS = 4;
+int ITEM_2_RADIUS = ITEM_DEFAULT_RADIUS;
 int ITEM_2_X = PLATFORM_2_BASE_POSITION + (PLATFORM_2_WIDTH / 2);
 int ITEM_2_Y = PLATFORM_2_HEIGHT + P1RADIUS;
 bool isItem2Collected = false;
 //item 3 properties
-int ITEM_3_RADIUS = 4;
+int ITEM_3_RADIUS = ITEM_DEFAULT_RADIUS;
 int ITEM_3_X = PLATFORM_3_BASE_POSITION + (PLATFORM_3_WIDTH / 2);
 int ITEM_3_Y = PLATFORM_3_HEIGHT + P1RADIUS;
 bool isItem3Collected = false;
