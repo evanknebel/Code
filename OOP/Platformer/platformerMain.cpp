@@ -81,6 +81,21 @@ void detectCollisionBoundries()
 		P1Y = 0 + P1RADIUS;
 	}
 }
+
+void canJump()
+{
+	if (isJumping == false)
+	{
+		if (JUMP_TIMER == 0)
+		{
+			if (sfw::getKey(265))
+			{
+				JUMP_TIMER = JUMP_HEIGHT;
+				isJumping = true;
+			}
+		}
+	}
+}
 int main()
 {
 	//create draw window
@@ -168,25 +183,6 @@ int main()
 			P1Y -= 0.00001;
 		}
 
-		//jump/////////////////////////////
-		//265 is KEY_UP
-		//if (isJumping == false)
-		//{
-		//	if (isFalling == true)
-		//	{
-		//		if (JUMP_TIMER == 0)
-		//		{
-		//			if (FALL_TIMER == 0)
-		//			{
-		//				if (sfw::getKey(265))
-		//				{
-		//					JUMP_TIMER = JUMP_HEIGHT;
-		//					isJumping = true;
-		//				}
-		//			}
-		//		}
-		//	}
-		//}
 		//rising motion
 		if (isJumping == true)
 		{
@@ -219,17 +215,7 @@ int main()
 		{
 			if (P1X - P1RADIUS < 0 + WINDOW_WIDTH && P1X + P1RADIUS > 0)
 			{
-				if (isJumping == false)
-				{
-					if (JUMP_TIMER == 0)
-					{
-						if (sfw::getKey(265))
-						{
-							JUMP_TIMER = JUMP_HEIGHT;
-							isJumping = true;
-						}
-					}
-				}
+				canJump();
 			}
 		}
 		
@@ -239,17 +225,7 @@ int main()
 			if (P1X - P1RADIUS < PLATFORM_1_BASE_POSITION + PLATFORM_1_WIDTH && P1X + P1RADIUS > PLATFORM_1_BASE_POSITION)
 			{
 				P1Y = PLATFORM_1_HEIGHT + P1RADIUS;
-				if (isJumping == false)
-				{
-					if (JUMP_TIMER == 0)
-					{
-						if (sfw::getKey(265))
-						{
-							JUMP_TIMER = JUMP_HEIGHT;
-							isJumping = true;
-						}
-					}
-				}
+				canJump();
 			}
 		}
 
@@ -259,17 +235,7 @@ int main()
 			if (P1X - P1RADIUS < PLATFORM_2_BASE_POSITION + PLATFORM_2_WIDTH && P1X + P1RADIUS > PLATFORM_2_BASE_POSITION)
 			{
 				P1Y = PLATFORM_2_HEIGHT + P1RADIUS;
-				if (isJumping == false)
-				{
-					if (JUMP_TIMER == 0)
-					{
-						if (sfw::getKey(265))
-						{
-							JUMP_TIMER = JUMP_HEIGHT;
-							isJumping = true;
-						}
-					}
-				}
+				canJump();
 			}
 		}
 
@@ -279,17 +245,7 @@ int main()
 			if (P1X - P1RADIUS < PLATFORM_3_BASE_POSITION + PLATFORM_3_WIDTH && P1X + P1RADIUS > PLATFORM_3_BASE_POSITION)
 			{
 				P1Y = PLATFORM_3_HEIGHT + P1RADIUS;
-				if (isJumping == false)
-				{
-					if (JUMP_TIMER == 0)
-					{
-						if (sfw::getKey(265))
-						{
-							JUMP_TIMER = JUMP_HEIGHT;
-							isJumping = true;
-						}
-					}
-				}
+				canJump();
 			}
 		}
 		////////end player 1 stuff
