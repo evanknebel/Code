@@ -10,6 +10,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "X-TestSpace", "X-TestSpace\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibrary", "MathLibrary\MathLibrary.vcxproj", "{97A1A2C0-5494-4277-A315-B37D30037756}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "X-SFWTest", "X-SFWTest\X-SFWTest.vcxproj", "{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +36,14 @@ Global
 		{97A1A2C0-5494-4277-A315-B37D30037756}.Release|x64.Build.0 = Release|x64
 		{97A1A2C0-5494-4277-A315-B37D30037756}.Release|x86.ActiveCfg = Release|Win32
 		{97A1A2C0-5494-4277-A315-B37D30037756}.Release|x86.Build.0 = Release|Win32
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Debug|x64.ActiveCfg = Debug|x64
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Debug|x64.Build.0 = Debug|x64
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Debug|x86.ActiveCfg = Debug|Win32
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Debug|x86.Build.0 = Debug|Win32
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Release|x64.ActiveCfg = Release|x64
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Release|x64.Build.0 = Release|x64
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Release|x86.ActiveCfg = Release|Win32
+		{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
