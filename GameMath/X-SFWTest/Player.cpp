@@ -23,7 +23,7 @@ void Player::update()
 		movement.x += 1;
 	}
 
-	movement * speed;
+	movement *= speed;
 
 	pos += movement;
 }

@@ -21,6 +21,40 @@ vec2 & operator+=(vec2 & lhs, const vec2 & rhs)
 	return lhs;
 }
 
+vec2 operator-(const vec2 & lhs, const vec2 & rhs)
+{
+	lhs.x - rhs.x;
+	lhs.y - rhs.y;
+
+	return lhs;
+	return vec2();
+}
+
+vec2 & operator-=(vec2 & lhs, const vec2 & rhs)
+{
+	lhs.x -= rhs.x;
+	lhs.y -= rhs.y;
+
+	return lhs;
+}
+
+vec2 operator*(const vec2 & lhs, const vec2 & rhs)
+{
+	lhs.x * rhs.x;
+	lhs.y * rhs.y;
+
+	return lhs;
+	return vec2();
+}
+
+vec2 & operator*=(vec2 & lhs, const vec2 & rhs)
+{
+	lhs.x *= rhs.x;
+	lhs.y *= rhs.y;
+
+	return lhs;
+}
+
 bool operator==(const vec2 & lhs, const vec2 & rhs)
 {
 	//return lhs.x == rhs.x && lhs.y == rhs.y;
