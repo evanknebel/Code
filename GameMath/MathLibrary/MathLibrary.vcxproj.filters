@@ -15,18 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mathUtilities.h">
+    <ClInclude Include="vec2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="vec2.h">
+    <ClInclude Include="mathutils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mat3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mathUtilities.cpp">
+    <ClCompile Include="vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="vec2.cpp">
+    <ClCompile Include="mathutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="vec3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mat3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
