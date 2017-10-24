@@ -126,11 +126,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LockPick.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SFWTestMain.cpp" />
     <ClCompile Include="transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LockPick.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="transform.h" />
   </ItemGroup>
