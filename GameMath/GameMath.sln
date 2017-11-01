@@ -11,6 +11,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MathLibrary", "MathLibrary\MathLibrary.vcxproj", "{97A1A2C0-5494-4277-A315-B37D30037756}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "X-SFWTest", "X-SFWTest\X-SFWTest.vcxproj", "{13C966DF-BD91-4ACE-8FDB-FDF2A37BCEB5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{97A1A2C0-5494-4277-A315-B37D30037756} = {97A1A2C0-5494-4277-A315-B37D30037756}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

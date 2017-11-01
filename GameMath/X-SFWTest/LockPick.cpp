@@ -35,8 +35,8 @@ void Lockpick::update()
 	unsigned int font = sfw::loadTextureMap("res/fontmap.png", 16, 16);
 	mat3 t = myTrans.getLocalTransform();
 	right = myTrans.position + t[0].xy * 300;
-	
-	if (sfw::getKey(262))
+	//rotate clockwise
+	if (sfw::getKey(262) && !sfw::getKey(265))
 	{
 		myTrans.angle -= sfw::getDeltaTime() * 90;
 		if (myTrans.angle >= 360)
@@ -50,7 +50,7 @@ void Lockpick::update()
 		//defactoAngle = myTransform.angle;
 	}
 	//rotate counterclockwise
-	if (sfw::getKey(263))
+	if (sfw::getKey(263) && !sfw::getKey(265))
 	{
 		myTrans.angle += sfw::getDeltaTime() * 90;
 		if (myTrans.angle > 360)
@@ -75,16 +75,13 @@ void Lockpick::update()
 	//then checks for up if left and right are not pressed
 	if (alligned == true)
 	{
-		if (!sfw::getKey(262) && !sfw::getKey(263))
+		if (sfw::getKey(265) && !sfw::getKey(262) && !sfw::getKey(263))
 		{
-			if (sfw::getKey(265))
-			{
-				alligned = false;
-				wedgeEnd1 = rand() % 350 + 1;
-				wedgeEnd2 = wedgeEnd1 + 10;
-				round++;
-				sfw::drawString(font, "CLICK", 300, 330, 30, 50);
-			}
+			alligned = false;
+			wedgeEnd1 = rand() % 350 + 1;
+			wedgeEnd2 = wedgeEnd1 + 10;
+			round++;
+			sfw::drawString(font, "CLICK", 300, 330, 30, 50);
 		}
 	}
 	//completes on round 5
